@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(/images/balloons.webp);
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: sans-serif;
+  }
+
+  /* ------------------------------
+     Flip card container
+  --------------------------------*/
+  .flip-card {
+    width: 90vw;
+    max-width: 450px;
+    min-width: 250px;
+    aspect-ratio: 450 / 850;
+    border-radius: 30px;
+    overflow: hidden;
+    perspective: 1000px;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 8px 25px 5px #f7f4ef;
+    background-color: #f7f5f1;
+    background-image: url(/images/confetti.webp);
+  }
+
+  /* ------------------------------
+     Flip card inner
+  --------------------------------*/
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: transform 2s cubic-bezier(0.5, 0, 0.175, 2);
+    border-radius: inherit;
+  }
+
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateX(180deg);
+  }
+
+  /* ------------------------------
+     Front & Back Faces
+  --------------------------------*/
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: inherit;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+  }
+
+  .flip-card-back {
+    transform: rotateX(180deg);
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    background: url('/images/back-card.png');
+  }
+
+  /* ------------------------------
+     Social icons
+  --------------------------------*/
+  .socials {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    z-index: 10;
+    pointer-events: auto; /* ensures icons are clickable */
+  }
+
+  .socials img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    filter: invert(96%) drop-shadow(-2px 2px 1px #000000);
+    cursor: pointer;
+  }
+
+  /* ------------------------------
+     Responsive tweaks
+  --------------------------------*/
+  @media (max-width: 500px) {
+    .socials img {
+      width: 32px;
+      height: 32px;
+    }
+    .flip-card {
+      width: 95vw;
+    }
+  }
